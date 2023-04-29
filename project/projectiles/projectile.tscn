@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8kqrwmcs73ab"]
+
+[ext_resource type="Script" path="res://projectiles/projectile.gd" id="1_atv7k"]
+[ext_resource type="Texture2D" uid="uid://dfe22v17qg355" path="res://projectiles/bolt.png" id="2_jhjax"]
+[ext_resource type="Texture2D" uid="uid://btrbsmvluxdhm" path="res://projectiles/cannonball.png" id="3_y5b5q"]
+[ext_resource type="Texture2D" uid="uid://dh7hoyq7ulvit" path="res://projectiles/lance.png" id="4_p6puk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gkdh"]
+radius = 2.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejfhv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jhjax")
+}],
+"loop": true,
+"name": &"bolt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y5b5q")
+}],
+"loop": true,
+"name": &"cannon",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_p6puk")
+}],
+"loop": true,
+"name": &"lance",
+"speed": 5.0
+}]
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_atv7k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5gkdh")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ejfhv")
+animation = &"cannon"

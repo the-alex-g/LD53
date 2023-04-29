@@ -5,6 +5,14 @@ extends CharacterBody2D
 
 var direction := 0.0
 var damage := 0
+var type := ""
+
+@onready var _sprite : AnimatedSprite2D = $Sprite
+
+
+func _ready()->void:
+	_sprite.play(type)
+	_sprite.rotation = direction
 
 
 func _process(delta:float)->void:

@@ -8,9 +8,10 @@ const TILE_SIZE := 8
 @export var range_in_tiles := 2.0
 @export var attack_delay_time := 1.0
 @export var attack_damage := 1
-@export var projectile_type : PackedScene
+@export_enum("lance", "cannon", "bolt") var tower_type := "bolt"
 
 var _target : Enemy = null
+var armored := false
 
 @onready var _range := (range_in_tiles + 0.5) * TILE_SIZE
 @onready var _attack_timer : Timer = $AttackTimer
@@ -23,7 +24,8 @@ func _process(_delta:float)->void:
 
 
 func _on_attack_timer_timeout()->void:
-	var projectile : Projectile = projectile_type.instantiate()
+	var projectile : Projectile = preload("res://projectiles/projectile.tscn").instantiate()
+	projectile.type = tower_type
 	projectile.position = global_position
 	projectile.direction = get_angle_to(_target.global_position) 
 	projectile.damage = attack_damage
@@ -42,6 +44,15 @@ func _on_body_exited(body:PhysicsBody2D)->void:
 		_attack_timer.stop()
 
 
+func armor()->void:
+	armored = true
+	$Base.play("armored")
+
+
 func damage()->void:
-	emit_signal("destroyed")
-	queue_free()
+	if armored:
+		armored = false
+		$Base.play("default")
+	else:
+		emit_signal("destroyed")
+		queue_free()

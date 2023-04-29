@@ -20,9 +20,5 @@ func _ready()->void:
 	queue_free()
 
 
-func _process(delta:float)->void:
-	$CollisionShape2D.shape.radius = clamp(lerp(explosion_radius, 0.0, $LifeTimer.time_left / _particles.lifetime), 0.0, explosion_radius)
-
-
 func _on_area_entered(area:Area2D)->void:
 	area.damage()

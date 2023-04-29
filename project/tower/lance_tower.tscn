@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbjd4syiyjv1n"]
+
+[ext_resource type="PackedScene" uid="uid://cxsswh67asvyi" path="res://tower/bolt_tower.tscn" id="1_or7hm"]
+
+[node name="LanceTower" instance=ExtResource("1_or7hm")]
+range_in_tiles = 4.0
+attack_delay_time = 1.5
+tower_type = "lance"

@@ -56,13 +56,14 @@ format = 2
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_qw4mj")
 
+[node name="TowerContainer" type="Node2D" parent="."]
+
 [node name="TowerPlacement" type="Sprite2D" parent="."]
 texture = ExtResource("2_afegi")
 centered = false
-
-[node name="TowerContainer" type="Node2D" parent="."]
 
 [node name="HUD" parent="." instance=ExtResource("4_d5w23")]
 
 [connection signal="update_score" from="." to="HUD" method="_on_main_update_score"]
 [connection signal="update_scrap" from="." to="HUD" method="_on_main_update_scrap"]
+[connection signal="selection_changed" from="HUD" to="." method="_on_hud_selection_changed"]

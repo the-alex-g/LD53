@@ -34,3 +34,38 @@ anchor_bottom = 1.0
 offset_top = -6.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="TowerTypes" type="VBoxContainer" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_husl3")
+
+[node name="Bolt" type="Button" parent="TowerTypes"]
+layout_mode = 2
+toggle_mode = true
+text = "Bolt: 2"
+
+[node name="Cannon" type="Button" parent="TowerTypes"]
+layout_mode = 2
+toggle_mode = true
+text = "Cannon: 4"
+
+[node name="Lance" type="Button" parent="TowerTypes"]
+layout_mode = 2
+toggle_mode = true
+text = "Lance: 4"
+
+[node name="Armor" type="Button" parent="TowerTypes"]
+layout_mode = 2
+toggle_mode = true
+text = "Armor: 1"
+
+[connection signal="toggled" from="TowerTypes/Bolt" to="." method="_on_bolt_toggled"]
+[connection signal="toggled" from="TowerTypes/Cannon" to="." method="_on_cannon_toggled"]
+[connection signal="toggled" from="TowerTypes/Lance" to="." method="_on_lance_toggled"]
+[connection signal="toggled" from="TowerTypes/Armor" to="." method="_on_armor_toggled"]
