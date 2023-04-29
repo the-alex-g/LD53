@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfjyuy6jocmho"]
+
+[ext_resource type="Script" path="res://enemy/enemy_explosion.gd" id="1_y5bxw"]
+[ext_resource type="Texture2D" uid="uid://bfo2yuy7i1if1" path="res://enemy/explosion_particle.png" id="2_j57no"]
+
+[sub_resource type="Gradient" id="Gradient_00cot"]
+offsets = PackedFloat32Array(0, 0.0993377, 0.298013, 0.503311, 0.774834, 1)
+colors = PackedColorArray(0.900662, 0.900662, 0.900662, 1, 0.14902, 1, 0.929412, 1, 1, 0.811765, 0.0431373, 1, 1, 0.478431, 0.0431373, 1, 1, 0.0823529, 0.0431373, 1, 0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gh505"]
+
+[node name="EnemyExplosion" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_y5bxw")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.5
+randomness = 0.1
+lifetime_randomness = 0.1
+texture = ExtResource("2_j57no")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 14.0
+initial_velocity_max = 16.0
+color_ramp = SubResource("Gradient_00cot")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gh505")
+
+[node name="LifeTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

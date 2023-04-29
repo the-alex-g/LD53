@@ -1,6 +1,8 @@
 class_name Tower
 extends Area2D
 
+signal destroyed
+
 const TILE_SIZE := 8
 
 @export var range_in_tiles := 2.0
@@ -12,7 +14,7 @@ var _target : Enemy = null
 
 @onready var _range := (range_in_tiles + 0.5) * TILE_SIZE
 @onready var _attack_timer : Timer = $AttackTimer
-@onready var _collision_shape : CollisionShape2D = $CollisionShape2D
+@onready var _collision_shape : CollisionShape2D = $AttackArea/CollisionShape2D
 
 
 func _process(_delta:float)->void:
@@ -29,14 +31,17 @@ func _on_attack_timer_timeout()->void:
 
 
 func _on_body_entered(body:PhysicsBody2D)->void:
-	print("entered")
 	if body is Enemy and _target == null:
 		_target = body
 		_attack_timer.start(attack_delay_time)
 
 
 func _on_body_exited(body:PhysicsBody2D)->void:
-	print("exited")
 	if body == _target:
 		_target = null
 		_attack_timer.stop()
+
+
+func damage()->void:
+	emit_signal("destroyed")
+	queue_free()

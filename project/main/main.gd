@@ -60,6 +60,7 @@ func _create_enemy()->void:
 	
 	var enemy : Enemy = preload("res://enemy/enemy.tscn").instantiate()
 	enemy.reached_end.connect(_enemy_reached_end, CONNECT_ONE_SHOT)
+	enemy.died.connect(_create_enemy, CONNECT_ONE_SHOT)
 	handle.add_child(enemy)
 
 
@@ -67,8 +68,14 @@ func _place_tower(unit_position:Vector2)->void:
 	_unit_tower_positions.append(unit_position)
 	var local_position := (unit_position + Vector2.ONE / 2) * TILE_SIZE
 	var tower := preload("res://tower/tower.tscn").instantiate()
+	tower.destroyed.connect(_tower_destroyed.bind(unit_position), CONNECT_ONE_SHOT)
 	tower.position = local_position
 	add_child(tower)
+
+
+func _tower_destroyed(tower_position:Vector2)->void:
+	var tower_position_index := _unit_tower_positions.find(tower_position)
+	_unit_tower_positions.remove_at(tower_position_index)
 
 
 func _enemy_reached_end()->void:
