@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://rt5lxhl5ojac"]
+[gd_scene load_steps=8 format=3 uid="uid://rt5lxhl5ojac"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_fu7l2"]
 [ext_resource type="Texture2D" uid="uid://cjr881stwr67k" path="res://main/road_tiles.png" id="2_6xq1d"]
 [ext_resource type="Texture2D" uid="uid://eb1evyv0w3kw" path="res://main/tower_placement.png" id="2_afegi"]
+[ext_resource type="PackedScene" uid="uid://bhl6y75dnwpbg" path="res://main/hud.tscn" id="4_d5w23"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hp3vm"]
 texture = ExtResource("2_6xq1d")
@@ -60,3 +61,7 @@ texture = ExtResource("2_afegi")
 centered = false
 
 [node name="TowerContainer" type="Node2D" parent="."]
+
+[node name="HUD" parent="." instance=ExtResource("4_d5w23")]
+
+[connection signal="update_scrap" from="." to="HUD" method="_on_main_update_scrap"]

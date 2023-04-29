@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://qfchrmm601e2"]
+
+[ext_resource type="FontVariation" uid="uid://cnlirrjgn6nu4" path="res://resources/no_line_space.tres" id="1_kk6vy"]
+
+[resource]
+default_font = ExtResource("1_kk6vy")
+default_font_size = 8
+Label/constants/line_spacing = 0
