@@ -6,6 +6,7 @@ const TILE_SIZE := 8
 var _unit_path_points : PackedVector2Array = []
 var _unit_tower_positions : PackedVector2Array = []
 var _can_place := false
+var _enemies_created := 10
 
 @onready var _enemy_path : Path2D = $EnemyPath
 @onready var _tilemap : TileMap = $TileMap
@@ -59,9 +60,11 @@ func _create_enemy()->void:
 	_enemy_path.add_child(handle)
 	
 	var enemy : Enemy = preload("res://enemy/enemy.tscn").instantiate()
+	enemy.upgrades = _enemies_created
 	enemy.reached_end.connect(_enemy_reached_end, CONNECT_ONE_SHOT)
 	enemy.died.connect(_create_enemy, CONNECT_ONE_SHOT)
 	handle.add_child(enemy)
+	_enemies_created += 1
 
 
 func _place_tower(unit_position:Vector2)->void:
@@ -70,7 +73,7 @@ func _place_tower(unit_position:Vector2)->void:
 	var tower := preload("res://tower/tower.tscn").instantiate()
 	tower.destroyed.connect(_tower_destroyed.bind(unit_position), CONNECT_ONE_SHOT)
 	tower.position = local_position
-	add_child(tower)
+	$TowerContainer.add_child(tower)
 
 
 func _tower_destroyed(tower_position:Vector2)->void:

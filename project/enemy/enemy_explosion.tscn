@@ -16,7 +16,7 @@ script = ExtResource("1_y5bxw")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-amount = 32
+amount = 30
 lifetime = 0.5
 one_shot = true
 explosiveness = 0.5
@@ -25,8 +25,6 @@ lifetime_randomness = 0.1
 texture = ExtResource("2_j57no")
 spread = 180.0
 gravity = Vector2(0, 0)
-initial_velocity_min = 14.0
-initial_velocity_max = 16.0
 color_ramp = SubResource("Gradient_00cot")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

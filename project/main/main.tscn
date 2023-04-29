@@ -58,3 +58,5 @@ curve = SubResource("Curve2D_qw4mj")
 [node name="TowerPlacement" type="Sprite2D" parent="."]
 texture = ExtResource("2_afegi")
 centered = false
+
+[node name="TowerContainer" type="Node2D" parent="."]
