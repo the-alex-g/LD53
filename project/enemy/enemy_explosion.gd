@@ -21,7 +21,7 @@ func _ready()->void:
 
 
 func _process(delta:float)->void:
-	$CollisionShape2D.shape.radius = lerp(0.0, explosion_radius, _particles.lifetime / $LifeTimer.time_left)
+	$CollisionShape2D.shape.radius = clamp(lerp(explosion_radius, 0.0, $LifeTimer.time_left / _particles.lifetime), 0.0, explosion_radius)
 
 
 func _on_area_entered(area:Area2D)->void:

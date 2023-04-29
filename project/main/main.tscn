@@ -64,4 +64,5 @@ centered = false
 
 [node name="HUD" parent="." instance=ExtResource("4_d5w23")]
 
+[connection signal="update_score" from="." to="HUD" method="_on_main_update_score"]
 [connection signal="update_scrap" from="." to="HUD" method="_on_main_update_scrap"]

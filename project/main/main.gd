@@ -1,6 +1,7 @@
 extends Node2D
 
 signal update_scrap(value)
+signal update_score(value)
 
 const MAP_SIZE := 8
 const TILE_SIZE := 8
@@ -8,9 +9,10 @@ const TILE_SIZE := 8
 var _unit_path_points : PackedVector2Array = []
 var _unit_tower_positions : PackedVector2Array = []
 var _can_place := false
-var _enemies_created := 10
-var _scrap := 100 : set = _set_scrap
+var _enemies_created := 0
+var _scrap := 50 : set = _set_scrap
 var _tower_cost := 10
+var _score := 0 : set = _set_score
 
 @onready var _enemy_path : Path2D = $EnemyPath
 @onready var _tilemap : TileMap = $TileMap
@@ -19,8 +21,7 @@ var _tower_cost := 10
 
 func _ready()->void:
 	randomize()
-	_generate_enemy_path()
-	_create_enemy()
+	_start_game()
 
 
 func _process(_delta:float)->void:
@@ -38,6 +39,13 @@ func _process(_delta:float)->void:
 		_tower_placement.modulate = Color.LIGHT_SEA_GREEN if _can_place else Color.ORANGE_RED
 	else:
 		_tower_placement.modulate = Color(1.0, 1.0, 1.0, 0.0)
+
+
+func _start_game()->void:
+	_generate_enemy_path()
+	_create_enemy()
+	_set_score(0)
+	_set_scrap(50)
 
 
 func _generate_enemy_path()->void:
@@ -65,6 +73,7 @@ func _generate_enemy_path()->void:
 func _create_enemy(upgrades := 0)->void:
 	if upgrades > 0:
 		_set_scrap(_scrap + upgrades * 5)
+		_set_score(_score + upgrades)
 	
 	var handle := PathFollow2D.new()
 	_enemy_path.add_child(handle)
@@ -106,3 +115,8 @@ func _generate_map(unit_path_points:PackedVector2Array)->void:
 func _set_scrap(value:int)->void:
 	_scrap = value
 	emit_signal("update_scrap", value)
+
+
+func _set_score(value:int)->void:
+	_score = value
+	emit_signal("update_score", value)
