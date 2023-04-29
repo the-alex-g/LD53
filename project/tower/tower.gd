@@ -3,36 +3,40 @@ extends Area2D
 
 const TILE_SIZE := 8
 
-@export var tiles_of_range := 2.0
+@export var range_in_tiles := 2.0
 @export var attack_delay_time := 1.0
 @export var attack_damage := 1
 @export var projectile_type : PackedScene
 
-var _target : Enemy
+var _target : Enemy = null
 
-@onready var _weapon_range := (tiles_of_range + 0.5) * TILE_SIZE
+@onready var _range := (range_in_tiles + 0.5) * TILE_SIZE
 @onready var _attack_timer : Timer = $AttackTimer
+@onready var _collision_shape : CollisionShape2D = $CollisionShape2D
 
 
-func _ready()->void:
-	$CollisionShape2D.shape.radius = _weapon_range
-
-
-func _on_area_entered(area:Area2D)->void:
-	if area is Enemy and _target == null:
-		_target = area
-		_attack_timer.start(attack_delay_time)
-
-
-func _on_area_exited(area:Area2D)->void:
-	if area == _target:
-		_target = null
-		_attack_timer.stop()
+func _process(_delta:float)->void:
+	# godot 4 bug workaround
+	_collision_shape.shape.radius = _range
 
 
 func _on_attack_timer_timeout()->void:
-	var projectile : Area2D = projectile_type.instantiate()
+	var projectile : Projectile = projectile_type.instantiate()
 	projectile.position = global_position
 	projectile.direction = get_angle_to(_target.global_position) 
 	projectile.damage = attack_damage
 	get_parent().add_child(projectile)
+
+
+func _on_body_entered(body:PhysicsBody2D)->void:
+	print("entered")
+	if body is Enemy and _target == null:
+		_target = body
+		_attack_timer.start(attack_delay_time)
+
+
+func _on_body_exited(body:PhysicsBody2D)->void:
+	print("exited")
+	if body == _target:
+		_target = null
+		_attack_timer.stop()

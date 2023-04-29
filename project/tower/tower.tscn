@@ -4,8 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://phkadqksb2yh" path="res://tower/tower_base.png" id="2_gng6y"]
 [ext_resource type="PackedScene" uid="uid://bafrptls33se0" path="res://projectiles/base_projectile.tscn" id="2_t88w5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2ipxl"]
-radius = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_28s37"]
 
 [node name="Tower" type="Area2D"]
 collision_layer = 2
@@ -14,14 +13,13 @@ script = ExtResource("1_gdiol")
 projectile_type = ExtResource("2_t88w5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_2ipxl")
-debug_color = Color(0, 0.6, 0.701961, 0)
+shape = SubResource("CircleShape2D_28s37")
 
 [node name="Base" type="Sprite2D" parent="."]
 texture = ExtResource("2_gng6y")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

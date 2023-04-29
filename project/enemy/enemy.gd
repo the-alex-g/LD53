@@ -1,5 +1,5 @@
 class_name Enemy
-extends Area2D
+extends StaticBody2D
 
 signal reached_end
 
@@ -16,3 +16,7 @@ func _process(delta:float)->void:
 	handle.progress_ratio += delta / seconds_to_end
 	if handle.progress_ratio == 1.0:
 		emit_signal("reached_end")
+
+
+func damage(amount:int)->void:
+	pass
