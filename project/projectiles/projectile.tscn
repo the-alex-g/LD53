@@ -1,18 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8kqrwmcs73ab"]
+[gd_scene load_steps=8 format=3 uid="uid://b8kqrwmcs73ab"]
 
 [ext_resource type="Script" path="res://projectiles/projectile.gd" id="1_atv7k"]
-[ext_resource type="Texture2D" uid="uid://dfe22v17qg355" path="res://projectiles/bolt.png" id="2_jhjax"]
-[ext_resource type="Texture2D" uid="uid://btrbsmvluxdhm" path="res://projectiles/cannonball.png" id="3_y5b5q"]
-[ext_resource type="Texture2D" uid="uid://dh7hoyq7ulvit" path="res://projectiles/lance.png" id="4_p6puk"]
+[ext_resource type="Texture2D" uid="uid://dqxt4kja520ac" path="res://projectiles/projectile.png" id="2_4j723"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gkdh"]
 radius = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4j0t"]
+atlas = ExtResource("2_4j723")
+region = Rect2(0, 0, 2, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0ilr"]
+atlas = ExtResource("2_4j723")
+region = Rect2(2, 0, 2, 2)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqfno"]
+atlas = ExtResource("2_4j723")
+region = Rect2(0, 2, 2, 2)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ejfhv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_jhjax")
+"texture": SubResource("AtlasTexture_c4j0t")
 }],
 "loop": true,
 "name": &"bolt",
@@ -20,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_y5b5q")
+"texture": SubResource("AtlasTexture_d0ilr")
 }],
 "loop": true,
 "name": &"cannon",
@@ -28,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_p6puk")
+"texture": SubResource("AtlasTexture_vqfno")
 }],
 "loop": true,
 "name": &"lance",
@@ -45,4 +55,4 @@ shape = SubResource("CircleShape2D_5gkdh")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ejfhv")
-animation = &"cannon"
+animation = &"bolt"

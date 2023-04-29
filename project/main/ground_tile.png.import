@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfe22v17qg355"
-path="res://.godot/imported/bolt.png-695f842c39cf1d98d4478ccdcfffcafb.ctex"
+uid="uid://dobs7ttuui7a5"
+path="res://.godot/imported/ground_tile.png-4b390f985f276759e95ab08515143b24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://projectiles/bolt.png"
-dest_files=["res://.godot/imported/bolt.png-695f842c39cf1d98d4478ccdcfffcafb.ctex"]
+source_file="res://main/ground_tile.png"
+dest_files=["res://.godot/imported/ground_tile.png-4b390f985f276759e95ab08515143b24.ctex"]
 
 [params]
 

@@ -16,6 +16,12 @@ var armored := false
 @onready var _range := (range_in_tiles + 0.5) * TILE_SIZE
 @onready var _attack_timer : Timer = $AttackTimer
 @onready var _collision_shape : CollisionShape2D = $AttackArea/CollisionShape2D
+@onready var _armor : Sprite2D = $Base/Armor
+@onready var _base : AnimatedSprite2D = $Base
+
+
+func _ready()->void:
+	_base.play(tower_type)
 
 
 func _process(_delta:float)->void:
@@ -46,13 +52,17 @@ func _on_body_exited(body:PhysicsBody2D)->void:
 
 func armor()->void:
 	armored = true
-	$Base.play("armored")
+	_armor.visible = true
 
 
 func damage()->void:
 	if armored:
 		armored = false
-		$Base.play("default")
+		_armor.visible = false
 	else:
 		emit_signal("destroyed")
 		queue_free()
+
+
+func destroy()->void:
+	queue_free()

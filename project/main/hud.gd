@@ -12,6 +12,7 @@ signal selection_changed(new_selection)
 
 func _ready()->void:
 	_bolt_button.button_pressed = true
+	_bolt_button.grab_focus()
 
 
 func _on_main_update_scrap(value:int)->void:

@@ -18,6 +18,8 @@ const TOWER_STRINGS := {
 	Towers.CANNON:"cannon",
 	Towers.LANCE:"lance",
 }
+# Towers.ARMOR is missing from TOWER_STRINGS
+# because it does not need a name for loading purposes.
 
 var _unit_path_points : PackedVector2Array = []
 var _can_place := false
@@ -71,8 +73,12 @@ func _evaluate_can_place(mouse_unit_position:Vector2)->void:
 		_can_place = false
 
 
-
 func _start_game()->void:
+	for child in _enemy_path.get_children():
+		child.queue_free()
+	_enemies_created = 0
+	_towers.clear()
+	
 	_generate_enemy_path()
 	_create_enemy()
 	_set_score(0)
@@ -97,8 +103,10 @@ func _generate_enemy_path()->void:
 	
 	_generate_map(_unit_path_points)
 	
+	var new_path := Curve2D.new()
 	for point in _unit_path_points:
-		_enemy_path.curve.add_point((point + Vector2.ONE / 2) * TILE_SIZE)
+		new_path.add_point((point + Vector2.ONE / 2) * TILE_SIZE)
+	_enemy_path.curve = new_path
 
 
 func _create_enemy(upgrades := 0)->void:
@@ -138,11 +146,21 @@ func _tower_destroyed(tower_position:Vector2, tower_cost:int)->void:
 
 
 func _enemy_reached_end()->void:
-	print("losination on your part!")
+	# blow up all the towers
+	for tower in _towers.values():
+		tower.destroy()
+		await get_tree().create_timer(0.2).timeout
+	
+	_start_game()
 
 
 func _generate_map(unit_path_points:PackedVector2Array)->void:
+	_tilemap.clear()
+	for x in MAP_SIZE:
+		for y in MAP_SIZE:
+			_tilemap.set_cell(0, Vector2i(x, y), 1, Vector2i.ZERO)
 	_tilemap.set_cells_terrain_connect(0, unit_path_points, 0, 0)
+	
 
 
 func _set_scrap(value:int)->void:

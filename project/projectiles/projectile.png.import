@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh7hoyq7ulvit"
-path="res://.godot/imported/lance.png-db31c36238b56c53a52674e644488b74.ctex"
+uid="uid://dqxt4kja520ac"
+path="res://.godot/imported/projectile.png-1b4d2cb23675f3fd9101220e9985eb10.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://projectiles/lance.png"
-dest_files=["res://.godot/imported/lance.png-db31c36238b56c53a52674e644488b74.ctex"]
+source_file="res://projectiles/projectile.png"
+dest_files=["res://.godot/imported/projectile.png-1b4d2cb23675f3fd9101220e9985eb10.ctex"]
 
 [params]
 
