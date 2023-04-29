@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://rt5lxhl5ojac"]
+[gd_scene load_steps=5 format=3 uid="uid://rt5lxhl5ojac"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_fu7l2"]
+[ext_resource type="Texture2D" uid="uid://eb1evyv0w3kw" path="res://main/tower_placement.png" id="2_afegi"]
 
 [sub_resource type="TileSet" id="TileSet_3v7if"]
 tile_size = Vector2i(8, 8)
@@ -16,3 +17,7 @@ format = 2
 
 [node name="EnemyPath" type="Path2D" parent="."]
 curve = SubResource("Curve2D_qw4mj")
+
+[node name="TowerPlacement" type="Sprite2D" parent="."]
+texture = ExtResource("2_afegi")
+centered = false

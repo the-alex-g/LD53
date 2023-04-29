@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dswv6otceoq4j"]
+[gd_scene load_steps=5 format=3 uid="uid://dswv6otceoq4j"]
 
 [ext_resource type="Script" path="res://tower/tower.gd" id="1_gdiol"]
+[ext_resource type="Texture2D" uid="uid://phkadqksb2yh" path="res://tower/tower_base.png" id="2_gng6y"]
+[ext_resource type="PackedScene" uid="uid://bafrptls33se0" path="res://projectiles/base_projectile.tscn" id="2_t88w5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2ipxl"]
 radius = 20.0
@@ -9,9 +11,14 @@ radius = 20.0
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_gdiol")
+projectile_type = ExtResource("2_t88w5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2ipxl")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("2_gng6y")
 
 [node name="AttackTimer" type="Timer" parent="."]
 
