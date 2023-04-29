@@ -76,4 +76,4 @@ func _enemy_reached_end()->void:
 
 
 func _generate_map(unit_path_points:PackedVector2Array)->void:
-	pass
+	_tilemap.set_cells_terrain_connect(0, unit_path_points, 0, 0)
