@@ -65,4 +65,7 @@ func damage()->void:
 
 
 func destroy()->void:
+	var explosion : CPUParticles2D = load("res://tower/tower_explosion.tscn").instantiate()
+	explosion.global_position = global_position
+	get_parent().add_child(explosion)
 	queue_free()

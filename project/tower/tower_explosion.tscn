@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhk0vjwwh2bib"]
+
+[ext_resource type="Texture2D" uid="uid://bfo2yuy7i1if1" path="res://enemy/explosion_particle.png" id="1_2p2pn"]
+[ext_resource type="Gradient" uid="uid://bxd7hsg321okp" path="res://resources/explosion_color_gradient.tres" id="2_4qkn6"]
+[ext_resource type="Script" path="res://tower/tower_explosion.gd" id="3_u50c8"]
+
+[node name="TowerExplosion" type="CPUParticles2D"]
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.6
+randomness = 0.3
+lifetime_randomness = 0.3
+texture = ExtResource("1_2p2pn")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+color_ramp = ExtResource("2_4qkn6")
+script = ExtResource("3_u50c8")

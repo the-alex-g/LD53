@@ -13,9 +13,7 @@ func _ready()->void:
 	_particles.amount = ceil(pow(explosion_radius, 2) * PI / 10.0)
 	_particles.emitting = true
 	
-	$LifeTimer.start(_particles.lifetime)
-	
-	await $LifeTimer.timeout
+	await get_tree().create_timer(_particles.lifetime).timeout
 	
 	queue_free()
 
