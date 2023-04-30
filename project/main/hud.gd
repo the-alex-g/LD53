@@ -11,6 +11,7 @@ var _score := 0
 @onready var _cannon_button : Button = $TowerTypes/Cannon
 @onready var _lance_button : Button = $TowerTypes/Lance
 @onready var _armor_button : Button = $TowerTypes/Armor
+@onready var _button_sound : AudioStreamPlayer = $ButtonSound
 
 
 func _ready()->void:
@@ -27,12 +28,17 @@ func _on_main_update_score(value:int)->void:
 	_score_label.text = "Score: " + str(value)
 
 
+func play_button_sound()->void:
+	_button_sound.play()
+
+
 func _on_bolt_toggled(button_pressed:bool)->void:
 	if button_pressed:
 		_cannon_button.set_pressed_no_signal(false)
 		_lance_button.set_pressed_no_signal(false)
 		_armor_button.set_pressed_no_signal(false)
 		emit_signal("selection_changed", "bolt")
+		_button_sound.play()
 	else:
 		_bolt_button.set_pressed_no_signal(true)
 
@@ -43,6 +49,7 @@ func _on_cannon_toggled(button_pressed:bool)->void:
 		_lance_button.set_pressed_no_signal(false)
 		_armor_button.set_pressed_no_signal(false)
 		emit_signal("selection_changed", "cannon")
+		_button_sound.play()
 	else:
 		_cannon_button.set_pressed_no_signal(true)
 
@@ -53,6 +60,7 @@ func _on_lance_toggled(button_pressed:bool)->void:
 		_bolt_button.set_pressed_no_signal(false)
 		_armor_button.set_pressed_no_signal(false)
 		emit_signal("selection_changed", "lance")
+		_button_sound.play()
 	else:
 		_lance_button.set_pressed_no_signal(true)
 
@@ -63,6 +71,7 @@ func _on_armor_toggled(button_pressed:bool)->void:
 		_lance_button.set_pressed_no_signal(false)
 		_bolt_button.set_pressed_no_signal(false)
 		emit_signal("selection_changed", "armor")
+		_button_sound.play()
 	else:
 		_armor_button.set_pressed_no_signal(true)
 
@@ -74,6 +83,7 @@ func _on_main_game_over()->void:
 
 func _on_play_again_pressed()->void:
 	$GameOverPanel.visible = false
+	_button_sound.play()
 	emit_signal("start_game")
 
 

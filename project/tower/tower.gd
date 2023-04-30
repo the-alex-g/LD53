@@ -32,13 +32,19 @@ func _process(_delta:float)->void:
 
 func _on_attack_timer_timeout()->void:
 	# make sure the target is within range
-	if _target.global_position.distance_to(global_position) > _range:
+	if is_instance_valid(_target):
+		if _target.global_position.distance_to(global_position) > _range:
+			_target = null
+			_attack_timer.stop()
+			return
+	else:
 		_target = null
 		_attack_timer.stop()
 		return
 	
 	# if it is, shoot
 	var projectile : Projectile = preload("res://projectiles/projectile.tscn").instantiate()
+	$ShootSound.m_play()
 	projectile.type = tower_type
 	projectile.position = global_position
 	projectile.direction = get_angle_to(_target.global_position) 
@@ -63,7 +69,7 @@ func damage()->void:
 		_armor.visible = false
 	else:
 		emit_signal("destroyed")
-		queue_free()
+		_remove_tower()
 
 
 func destroy()->void:
@@ -71,4 +77,13 @@ func destroy()->void:
 	var explosion : CPUParticles2D = load("res://tower/tower_explosion.tscn").instantiate()
 	explosion.global_position = global_position
 	get_parent().add_child(explosion)
+	_remove_tower()
+
+
+func _remove_tower()->void:
+	hide()
+	$CollapseSound.play()
+
+
+func _on_collapse_sound_finished():
 	queue_free()

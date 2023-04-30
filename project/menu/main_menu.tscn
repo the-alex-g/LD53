@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://mcfq8sdeo2y2"]
+[gd_scene load_steps=5 format=3 uid="uid://mcfq8sdeo2y2"]
 
 [ext_resource type="Theme" uid="uid://qfchrmm601e2" path="res://resources/theme.tres" id="1_08rlu"]
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="2_ijbwq"]
+[ext_resource type="AudioStream" uid="uid://dpgfvrgs0c4nn" path="res://resources/sfx/button_press.wav" id="3_2ejfs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uair4"]
 
@@ -63,6 +64,10 @@ text = "Mute Music"
 [node name="SFXMute" type="CheckBox" parent="MenuButtons"]
 layout_mode = 2
 text = "Mute Sound Effects"
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2ejfs")
+bus = &"SFX"
 
 [connection signal="pressed" from="MenuButtons/Play" to="." method="_on_play_pressed"]
 [connection signal="toggled" from="MenuButtons/Fullscreen" to="." method="_on_fullscreen_toggled"]

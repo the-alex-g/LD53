@@ -38,6 +38,12 @@ var _game_over := false
 
 func _ready()->void:
 	randomize()
+	# this line is to handle the button press from the main menu
+	# that switches to this scene.
+	# I know that it's not the best practice, but I don't want to
+	# come up with something better right now.
+	$HUD.play_button_sound()
+	
 	_start_game()
 
 
@@ -143,6 +149,7 @@ func _create_enemy(upgrades := 0)->void:
 
 func _place_tower(unit_position:Vector2)->void:
 	_set_scrap(_scrap - _get_tower_cost())
+	$TowerPlacement/VariableStreamPlayer2D.m_play()
 	
 	if _tower_selected != Towers.ARMOR:
 		# place the tower

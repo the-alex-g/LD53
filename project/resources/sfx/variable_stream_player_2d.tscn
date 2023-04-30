@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://emuvpna8bg4d"]
+
+[ext_resource type="Script" path="res://resources/sfx/variable_stream_player_2d.gd" id="1_bit4l"]
+
+[node name="VariableStreamPlayer2D" type="AudioStreamPlayer2D"]
+bus = &"SFX"
+script = ExtResource("1_bit4l")

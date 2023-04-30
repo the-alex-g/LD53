@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://bhl6y75dnwpbg"]
+[gd_scene load_steps=18 format=3 uid="uid://bhl6y75dnwpbg"]
 
 [ext_resource type="Script" path="res://main/hud.gd" id="1_hukr5"]
 [ext_resource type="Theme" uid="uid://qfchrmm601e2" path="res://resources/theme.tres" id="1_husl3"]
+[ext_resource type="AudioStream" uid="uid://dpgfvrgs0c4nn" path="res://resources/sfx/button_press.wav" id="3_bm6b8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b06vr"]
 
@@ -289,6 +290,10 @@ text = "Play Again"
 [node name="MainMenu" type="Button" parent="GameOverPanel/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bm6b8")
+bus = &"SFX"
 
 [connection signal="toggled" from="TowerTypes/Bolt" to="." method="_on_bolt_toggled"]
 [connection signal="toggled" from="TowerTypes/Cannon" to="." method="_on_cannon_toggled"]

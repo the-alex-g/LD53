@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cfjyuy6jocmho"]
+[gd_scene load_steps=7 format=3 uid="uid://cfjyuy6jocmho"]
 
 [ext_resource type="Script" path="res://enemy/enemy_explosion.gd" id="1_y5bxw"]
 [ext_resource type="Texture2D" uid="uid://bfo2yuy7i1if1" path="res://enemy/explosion_particle.png" id="2_j57no"]
 [ext_resource type="Gradient" uid="uid://bxd7hsg321okp" path="res://resources/explosion_color_gradient.tres" id="3_2vds6"]
+[ext_resource type="PackedScene" uid="uid://emuvpna8bg4d" path="res://resources/sfx/variable_stream_player_2d.tscn" id="4_brgoj"]
+[ext_resource type="AudioStream" uid="uid://cen58urt7ybla" path="res://resources/sfx/enemy_explode.wav" id="5_x7136"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gh505"]
 
@@ -26,5 +28,10 @@ color_ramp = ExtResource("3_2vds6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gh505")
+
+[node name="VariableStreamPlayer2D" parent="." instance=ExtResource("4_brgoj")]
+stream = ExtResource("5_x7136")
+volume_db = 3.0
+autoplay = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

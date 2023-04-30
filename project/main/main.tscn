@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://rt5lxhl5ojac"]
+[gd_scene load_steps=12 format=3 uid="uid://rt5lxhl5ojac"]
 
 [ext_resource type="Script" path="res://main/main.gd" id="1_fu7l2"]
 [ext_resource type="Texture2D" uid="uid://cjr881stwr67k" path="res://main/road_tiles.png" id="2_6xq1d"]
 [ext_resource type="Texture2D" uid="uid://cxkfexttksclm" path="res://main/tower_placement.png" id="2_afegi"]
 [ext_resource type="Texture2D" uid="uid://dobs7ttuui7a5" path="res://main/ground_tile.png" id="3_r2tns"]
 [ext_resource type="PackedScene" uid="uid://bhl6y75dnwpbg" path="res://main/hud.tscn" id="4_d5w23"]
+[ext_resource type="PackedScene" uid="uid://emuvpna8bg4d" path="res://resources/sfx/variable_stream_player_2d.tscn" id="6_obm52"]
+[ext_resource type="AudioStream" uid="uid://b8io52k4m32sx" path="res://resources/sfx/build_tower.wav" id="7_ve73o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mbbxi"]
 texture = ExtResource("2_6xq1d")
@@ -74,6 +76,9 @@ curve = SubResource("Curve2D_qw4mj")
 [node name="TowerPlacement" type="Sprite2D" parent="."]
 texture = ExtResource("2_afegi")
 centered = false
+
+[node name="VariableStreamPlayer2D" parent="TowerPlacement" instance=ExtResource("6_obm52")]
+stream = ExtResource("7_ve73o")
 
 [node name="HUD" parent="." instance=ExtResource("4_d5w23")]
 
