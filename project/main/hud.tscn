@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bhl6y75dnwpbg"]
+[gd_scene load_steps=20 format=3 uid="uid://bhl6y75dnwpbg"]
 
 [ext_resource type="Script" path="res://main/hud.gd" id="1_hukr5"]
 [ext_resource type="Theme" uid="uid://qfchrmm601e2" path="res://resources/theme.tres" id="1_husl3"]
@@ -162,6 +162,32 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8s17"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxd88"]
+bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="LabelSettings" id="LabelSettings_rfsku"]
 
 [node name="HUD" type="CanvasLayer"]
@@ -241,6 +267,8 @@ text = "Lance: 4"
 
 [node name="Armor" type="Button" parent="TowerTypes"]
 layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxFlat_o8s17")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lxd88")
 toggle_mode = true
 text = "Armor: 1"
 

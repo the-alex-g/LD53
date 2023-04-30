@@ -33,7 +33,7 @@ func _upgrade()->void:
 				if seconds_to_end > 5.0:
 					seconds_to_end -= 1.0
 			1:
-				explosion_radius += 4.0
+				explosion_radius += 8.0
 			2:
 				health += 2
 

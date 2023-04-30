@@ -1,6 +1,6 @@
 extends Area2D
 
-var explosion_radius := 10.0
+var explosion_radius := 24.0
 
 @onready var _particles : CPUParticles2D = $CPUParticles2D
 
