@@ -30,7 +30,7 @@ anchor_right = 1.0
 offset_top = 16.0
 offset_bottom = 38.0
 grow_horizontal = 2
-text = "This be GAME"
+text = "Here be a Game!"
 label_settings = SubResource("LabelSettings_uair4")
 horizontal_alignment = 1
 

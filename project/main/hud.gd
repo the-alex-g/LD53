@@ -5,8 +5,8 @@ signal start_game
 
 var _score := 0
 
-@onready var _scrap_label : Label = $Control/ScrapLabel
-@onready var _score_label : Label = $Control/ScoreLabel
+@onready var _scrap_label : Label = $Control/HBoxContainer/ScrapLabel
+@onready var _score_label : Label = $Control/HBoxContainer/ScoreLabel
 @onready var _bolt_button : Button = $TowerTypes/Bolt
 @onready var _cannon_button : Button = $TowerTypes/Cannon
 @onready var _lance_button : Button = $TowerTypes/Lance

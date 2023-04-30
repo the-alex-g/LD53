@@ -1,7 +1,165 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhl6y75dnwpbg"]
+[gd_scene load_steps=17 format=3 uid="uid://bhl6y75dnwpbg"]
 
 [ext_resource type="Script" path="res://main/hud.gd" id="1_hukr5"]
 [ext_resource type="Theme" uid="uid://qfchrmm601e2" path="res://resources/theme.tres" id="1_husl3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b06vr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vea3c"]
+bg_color = Color(0, 0.784314, 0.784314, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q741r"]
+bg_color = Color(0, 1, 1, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08qxe"]
+bg_color = Color(0, 0.694118, 0.694118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_liy60"]
+bg_color = Color(0, 0.784314, 0.784314, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5gtk"]
+bg_color = Color(0.858824, 0.52549, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c34c1"]
+bg_color = Color(1, 0.615686, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abp04"]
+bg_color = Color(0.596078, 0.356863, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msbok"]
+bg_color = Color(0.858824, 0.52549, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ppjk"]
+bg_color = Color(0.0823529, 0.776471, 0.0431373, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0ftt"]
+bg_color = Color(0.0980392, 0.92549, 0.0470588, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgugh"]
+bg_color = Color(0.0588235, 0.6, 0.0313726, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gn8fc"]
+bg_color = Color(0.0823529, 0.776471, 0.0431373, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_rfsku"]
 
@@ -19,24 +177,28 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_husl3")
 
-[node name="ScrapLabel" type="Label" parent="Control"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 6.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ScrapLabel" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+label_settings = SubResource("LabelSettings_b06vr")
 horizontal_alignment = 1
 clip_text = true
 
-[node name="ScoreLabel" type="Label" parent="Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -6.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="ScoreLabel" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Placeholder"
+label_settings = SubResource("LabelSettings_b06vr")
 horizontal_alignment = 1
 
 [node name="TowerTypes" type="VBoxContainer" parent="."]
@@ -51,16 +213,28 @@ theme = ExtResource("1_husl3")
 
 [node name="Bolt" type="Button" parent="TowerTypes"]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_vea3c")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q741r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_08qxe")
+theme_override_styles/focus = SubResource("StyleBoxFlat_liy60")
 toggle_mode = true
 text = "Bolt: 2"
 
 [node name="Cannon" type="Button" parent="TowerTypes"]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_u5gtk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_c34c1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_abp04")
+theme_override_styles/focus = SubResource("StyleBoxFlat_msbok")
 toggle_mode = true
 text = "Cannon: 4"
 
 [node name="Lance" type="Button" parent="TowerTypes"]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_4ppjk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_h0ftt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qgugh")
+theme_override_styles/focus = SubResource("StyleBoxFlat_gn8fc")
 toggle_mode = true
 text = "Lance: 4"
 
