@@ -1,10 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://mcfq8sdeo2y2"]
 
-[ext_resource type="Theme" path="res://resources/theme.tres" id="1_08rlu"]
+[ext_resource type="Theme" uid="uid://catqaohddwd05" path="res://resources/theme.tres" id="1_08rlu"]
 [ext_resource type="Script" path="res://menu/main_menu.gd" id="2_ijbwq"]
 [ext_resource type="AudioStream" uid="uid://dpgfvrgs0c4nn" path="res://resources/sfx/button_press.wav" id="3_2ejfs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uair4"]
+font_size = 20
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -28,10 +29,10 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 16.0
-offset_bottom = 38.0
+offset_top = 8.0
+offset_bottom = 42.0
 grow_horizontal = 2
-text = "Here be a Game!"
+text = "Delivery Destroyer"
 label_settings = SubResource("LabelSettings_uair4")
 horizontal_alignment = 1
 
