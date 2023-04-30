@@ -1,6 +1,6 @@
 # Delivery Destoyer
 
-This game is a submission for Ludem Dare 53. Theme: "Delivery." My game's adherence to the theme: "Minimal." Ah well.
+This game is a submission for Ludum Dare 53. Theme: "Delivery." My game's adherence to the theme: "Minimal." Ah well.
 
 Your job is to prevent the delivery of a high explosive to the power core of your weapons plant. You do this by delivering heavy weaponry to the delivery area, then said weaponry delivers highly deliverable payloads of dangerous deliverables onto the offending deliverer.
 
