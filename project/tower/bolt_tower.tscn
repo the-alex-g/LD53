@@ -5,27 +5,27 @@
 [ext_resource type="Texture2D" uid="uid://jfj3e1c74bln" path="res://tower/tower_armor.png" id="3_50hef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28s37"]
-radius = 4.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bdhl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lml60"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3e32k"]
 atlas = ExtResource("2_6vs4u")
-region = Rect2(0, 0, 8, 8)
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0q05o"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_scnub"]
 atlas = ExtResource("2_6vs4u")
-region = Rect2(0, 8, 8, 8)
+region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_giq88"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6i2j"]
 atlas = ExtResource("2_6vs4u")
-region = Rect2(8, 0, 8, 8)
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_c1w3l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lml60")
+"texture": SubResource("AtlasTexture_3e32k")
 }],
 "loop": true,
 "name": &"bolt",
@@ -33,7 +33,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0q05o")
+"texture": SubResource("AtlasTexture_scnub")
 }],
 "loop": true,
 "name": &"cannon",
@@ -41,7 +41,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_giq88")
+"texture": SubResource("AtlasTexture_s6i2j")
 }],
 "loop": true,
 "name": &"lance",
@@ -65,7 +65,7 @@ shape = SubResource("CircleShape2D_3bdhl")
 
 [node name="Base" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c1w3l")
-animation = &"bolt"
+animation = &"lance"
 
 [node name="Armor" type="Sprite2D" parent="Base"]
 visible = false

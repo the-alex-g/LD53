@@ -6,7 +6,7 @@ signal update_score(value)
 enum Towers {ARMOR, BOLT, CANNON, LANCE}
 
 const MAP_SIZE := 8
-const TILE_SIZE := 8
+const TILE_SIZE := 16
 const TOWER_COSTS := {
 	Towers.ARMOR:1,
 	Towers.BOLT:2,

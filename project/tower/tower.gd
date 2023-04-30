@@ -3,7 +3,7 @@ extends Area2D
 
 signal destroyed
 
-const TILE_SIZE := 8
+const TILE_SIZE := 16
 
 @export var range_in_tiles := 2.0
 @export var attack_delay_time := 1.0
