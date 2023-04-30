@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://resources/music/Jukebox.gd" id="1_hwd3h"]
+[ext_resource type="AudioStream" uid="uid://bt8u6vbgn0ckx" path="res://resources/music/ld53_music.ogg" id="1_kj3tp"]
+
+[node name="Jukebox" type="Node"]
+script = ExtResource("1_hwd3h")
+
+[node name="MainLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_kj3tp")
+bus = &"Music"

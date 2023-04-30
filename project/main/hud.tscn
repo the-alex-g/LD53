@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://bhl6y75dnwpbg"]
 
 [ext_resource type="Script" path="res://main/hud.gd" id="1_hukr5"]
-[ext_resource type="Theme" uid="uid://qfchrmm601e2" path="res://resources/theme.tres" id="1_husl3"]
+[ext_resource type="Theme" path="res://resources/theme.tres" id="1_husl3"]
 [ext_resource type="AudioStream" uid="uid://dpgfvrgs0c4nn" path="res://resources/sfx/button_press.wav" id="3_bm6b8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_b06vr"]

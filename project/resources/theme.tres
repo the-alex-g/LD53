@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://qfchrmm601e2"]
+[gd_resource type="Theme" load_steps=7 format=3]
 
-[ext_resource type="FontVariation" uid="uid://cnlirrjgn6nu4" path="res://resources/no_line_space.tres" id="1_kk6vy"]
+[ext_resource type="FontVariation" path="res://resources/fonts/no_line_space.tres" id="1_kk6vy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ud0n"]
 bg_color = Color(0.109804, 0.109804, 0.109804, 1)

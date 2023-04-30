@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3]
+
+[ext_resource type="FontFile" uid="uid://chdo5n2e7fblx" path="res://resources/fonts/didact_gothic_regular.ttf" id="1_o320m"]
+
+[resource]
+base_font = ExtResource("1_o320m")
+spacing_top = -3

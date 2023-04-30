@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://chdo5n2e7fblx"
-path="res://.godot/imported/didact_gothic_regular.ttf-d1795102ab10de2fc40ed2bc607f3c5d.fontdata"
+path="res://.godot/imported/didact_gothic_regular.ttf-33d66b3cc6cb6238677bb9a87066c000.fontdata"
 
 [deps]
 
-source_file="res://resources/didact_gothic_regular.ttf"
-dest_files=["res://.godot/imported/didact_gothic_regular.ttf-d1795102ab10de2fc40ed2bc607f3c5d.fontdata"]
+source_file="res://resources/fonts/didact_gothic_regular.ttf"
+dest_files=["res://.godot/imported/didact_gothic_regular.ttf-33d66b3cc6cb6238677bb9a87066c000.fontdata"]
 
 [params]
 

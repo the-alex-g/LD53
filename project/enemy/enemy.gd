@@ -21,8 +21,8 @@ func _ready()->void:
 
 func _process(delta:float)->void:
 	handle.progress_ratio += delta / seconds_to_end
-	if handle.progress_ratio == 1.0:
-		emit_signal("reached_end")
+	if handle.progress_ratio == 1.0 and not _reached_end:
+		$AnimatedSprite2D.play("bomb_drop")
 		_reached_end = true
 
 
@@ -60,5 +60,6 @@ func _explode()->void:
 	handle.get_parent().add_child(explosion)
 
 
-func _draw()->void:
-	draw_circle(Vector2.ZERO, 4.0, Color.DARK_RED)
+func _on_animated_sprite_2d_animation_finished()->void:
+	if _reached_end:
+		emit_signal("reached_end")
