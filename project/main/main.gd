@@ -51,6 +51,7 @@ func _process(_delta:float)->void:
 	if Input.is_action_just_pressed("place_tower") and _can_place:
 		_place_tower(mouse_unit_position)
 	
+	# update the color of the tower placement icon
 	if mouse_unit_position.y > MAP_SIZE - 1 or mouse_unit_position.x > MAP_SIZE - 1:
 		# cursor off board, make it invisible
 		_tower_placement.modulate = Color(1.0, 1.0, 1.0, 0.0)
@@ -60,6 +61,7 @@ func _process(_delta:float)->void:
 
 
 func _evaluate_can_place(mouse_unit_position:Vector2)->void:
+	# see if the current position is a valid place for a tower/armor
 	if _tower_placement.modulate != Color(1.0, 1.0, 1.0, 0.0):
 		if _tower_selected != Towers.ARMOR:
 			if _unit_path_points.has(mouse_unit_position) or _towers.has(mouse_unit_position) or _scrap < _get_tower_cost():
@@ -95,12 +97,14 @@ func _start_game()->void:
 func _generate_enemy_path()->void:
 	_unit_path_points = [Vector2.ZERO]
 	
+	# get the pattern of turns for the path
 	var sequence := []
 	for _i in MAP_SIZE - 1:
 		sequence.append("right")
 		sequence.append("down")
 	sequence.shuffle()
 	
+	# generate the points for the path
 	for direction in sequence:
 		match direction:
 			"right":
@@ -108,8 +112,10 @@ func _generate_enemy_path()->void:
 			"down":
 				_unit_path_points.append(_unit_path_points[_unit_path_points.size() - 1] + Vector2.DOWN)
 	
+	# place the tiles
 	_generate_map(_unit_path_points)
 	
+	# set the path
 	var new_path := Curve2D.new()
 	for point in _unit_path_points:
 		new_path.add_point((point + Vector2.ONE / 2) * TILE_SIZE)
@@ -118,12 +124,15 @@ func _generate_enemy_path()->void:
 
 func _create_enemy(upgrades := 0)->void:
 	if upgrades > 0:
+		# get scrap for the previous enemy
 		_set_scrap(_scrap + upgrades)
 		_set_score(_score + upgrades)
 	
+	# add path follow node for the enemy to attach to
 	var handle := PathFollow2D.new()
 	_enemy_path.add_child(handle)
 	
+	# add the enemy as a child of the path follow node
 	var enemy : Enemy = preload("res://enemy/enemy.tscn").instantiate()
 	enemy.upgrades = _enemies_created
 	enemy.reached_end.connect(_enemy_reached_end, CONNECT_ONE_SHOT)
@@ -136,6 +145,7 @@ func _place_tower(unit_position:Vector2)->void:
 	_set_scrap(_scrap - _get_tower_cost())
 	
 	if _tower_selected != Towers.ARMOR:
+		# place the tower
 		var local_position := (unit_position + Vector2.ONE / 2) * TILE_SIZE
 		
 		var tower : Tower = load("res://tower/" + TOWER_STRINGS[_tower_selected] + "_tower.tscn").instantiate()
@@ -164,11 +174,12 @@ func _enemy_reached_end()->void:
 
 func _generate_map(unit_path_points:PackedVector2Array)->void:
 	_tilemap.clear()
+	# fill the board with normal tiles
 	for x in MAP_SIZE:
 		for y in MAP_SIZE:
 			_tilemap.set_cell(0, Vector2i(x, y), 1, Vector2i.ZERO)
+	# add the path tiles
 	_tilemap.set_cells_terrain_connect(0, unit_path_points, 0, 0)
-	
 
 
 func _set_scrap(value:int)->void:
@@ -186,6 +197,7 @@ func _get_tower_cost()->int:
 
 
 func _on_hud_selection_changed(new_selection:String)->void:
+	# change which type of tower is being built
 	match new_selection:
 		"armor":
 			_tower_selected = Towers.ARMOR

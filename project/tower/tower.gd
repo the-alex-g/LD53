@@ -21,6 +21,7 @@ var armored := false
 
 
 func _ready()->void:
+	# set the animation to the appropriate tower type
 	_base.play(tower_type)
 
 
@@ -30,11 +31,13 @@ func _process(_delta:float)->void:
 
 
 func _on_attack_timer_timeout()->void:
+	# make sure the target is within range
 	if _target.global_position.distance_to(global_position) > _range:
 		_target = null
 		_attack_timer.stop()
 		return
 	
+	# if it is, shoot
 	var projectile : Projectile = preload("res://projectiles/projectile.tscn").instantiate()
 	projectile.type = tower_type
 	projectile.position = global_position
@@ -64,6 +67,7 @@ func damage()->void:
 
 
 func destroy()->void:
+	# this method is called by the main scene when the game ends.
 	var explosion : CPUParticles2D = load("res://tower/tower_explosion.tscn").instantiate()
 	explosion.global_position = global_position
 	get_parent().add_child(explosion)

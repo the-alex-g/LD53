@@ -6,6 +6,7 @@ var _music_bus_index := AudioServer.get_bus_index("Music")
 
 func _ready()->void:
 	Jukebox.play_main()
+	# set all the checkboxes to the proper value
 	$MenuButtons/Fullscreen.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	$MenuButtons/MusicMute.button_pressed = AudioServer.is_bus_mute(_music_bus_index)
 	$MenuButtons/SFXMute.button_pressed = AudioServer.is_bus_mute(_sfx_bus_index)
