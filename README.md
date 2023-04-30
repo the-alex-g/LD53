@@ -1,6 +1,6 @@
 # Delivery Destoyer
 
-This game is a submission for Ludum Dare 53. Theme: "Delivery." My game's adherence to the theme: "Minimal." Ah well.
+This game is a submission for Ludum Dare 53. Theme: "Delivery." My game's adherence to the theme: "Minimal." Oh well.
 
 Your job is to prevent the delivery of a high explosive to the power core of your weapons plant. You do this by delivering heavy weaponry to the delivery area, then said weaponry delivers highly deliverable payloads of dangerous deliverables onto the offending deliverer.
 
@@ -12,7 +12,7 @@ Cannon towers (orange) do twice as much damage as the bolt towers, but shoot sli
 Lance towers (green) have twice the range as the bolt towers, but shoot slightly slower. They cost 4 scrap.
 You can also add Armor to your towers. This allows them to withstand one explosion without breaking.
 
-When the little bomb people (LBPs) die, they explode, which destroys an nearby unarmored towers. The longer the game goes on, the better the LBPs get at exploding, running, and not dying.
+When the little bomb people (LBPs) die, they explode, which destroys any nearby unarmored towers. The longer the game goes on, the better the LBPs get at exploding, running, and not dying.
 
 ## Third-Party Assets
 
