@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://mcfq8sdeo2y2"]
+
+[ext_resource type="Theme" uid="uid://qfchrmm601e2" path="res://resources/theme.tres" id="1_08rlu"]
+[ext_resource type="Script" path="res://menu/main_menu.gd" id="2_ijbwq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uair4"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_08rlu")
+script = ExtResource("2_ijbwq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 16.0
+offset_bottom = 38.0
+grow_horizontal = 2
+text = "This be GAME"
+label_settings = SubResource("LabelSettings_uair4")
+horizontal_alignment = 1
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.5
+offset_top = -34.5
+offset_right = 47.5
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="MenuButtons"]
+layout_mode = 2
+text = "Play"
+
+[node name="Fullscreen" type="CheckBox" parent="MenuButtons"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="MusicMute" type="CheckBox" parent="MenuButtons"]
+layout_mode = 2
+text = "Mute Music"
+
+[node name="SFXMute" type="CheckBox" parent="MenuButtons"]
+layout_mode = 2
+text = "Mute Sound Effects"
+
+[connection signal="pressed" from="MenuButtons/Play" to="." method="_on_play_pressed"]
+[connection signal="toggled" from="MenuButtons/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="toggled" from="MenuButtons/MusicMute" to="." method="_on_music_mute_toggled"]
+[connection signal="toggled" from="MenuButtons/SFXMute" to="." method="_on_sfx_mute_toggled"]

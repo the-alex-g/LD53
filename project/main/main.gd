@@ -2,6 +2,7 @@ extends Node2D
 
 signal update_scrap(value)
 signal update_score(value)
+signal game_over
 
 enum Towers {ARMOR, BOLT, CANNON, LANCE}
 
@@ -28,6 +29,7 @@ var _scrap := 10 : set = _set_scrap
 var _tower_selected := Towers.BOLT
 var _score := 0 : set = _set_score
 var _towers := {}
+var _game_over := false
 
 @onready var _enemy_path : Path2D = $EnemyPath
 @onready var _tilemap : TileMap = $TileMap
@@ -40,6 +42,9 @@ func _ready()->void:
 
 
 func _process(_delta:float)->void:
+	if _game_over:
+		return
+	
 	var mouse_unit_position := _tilemap.local_to_map(_tilemap.to_local(get_global_mouse_position()))
 	_evaluate_can_place(mouse_unit_position)
 	
@@ -74,6 +79,8 @@ func _evaluate_can_place(mouse_unit_position:Vector2)->void:
 
 
 func _start_game()->void:
+	_game_over = false
+	
 	for child in _enemy_path.get_children():
 		child.queue_free()
 	_enemies_created = 0
@@ -146,12 +153,13 @@ func _tower_destroyed(tower_position:Vector2, tower_cost:int)->void:
 
 
 func _enemy_reached_end()->void:
+	_game_over = true
 	# blow up all the towers
 	for tower in _towers.values():
 		tower.destroy()
 		await get_tree().create_timer(0.2).timeout
 	
-	_start_game()
+	emit_signal("game_over")
 
 
 func _generate_map(unit_path_points:PackedVector2Array)->void:
@@ -187,3 +195,7 @@ func _on_hud_selection_changed(new_selection:String)->void:
 			_tower_selected = Towers.CANNON
 		"lance":
 			_tower_selected = Towers.LANCE
+
+
+func _on_hud_start_game()->void:
+	_start_game()

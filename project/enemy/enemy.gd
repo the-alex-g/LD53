@@ -9,6 +9,7 @@ signal died
 @export var explosion_radius := 10.0
 
 var upgrades := 0
+var _reached_end := false
 
 @onready var handle : PathFollow2D = get_parent()
 
@@ -22,6 +23,7 @@ func _process(delta:float)->void:
 	handle.progress_ratio += delta / seconds_to_end
 	if handle.progress_ratio == 1.0:
 		emit_signal("reached_end")
+		_reached_end = true
 
 
 func _upgrade()->void:
@@ -37,6 +39,9 @@ func _upgrade()->void:
 
 
 func damage(amount:int)->void:
+	if _reached_end:
+		return
+	
 	health -= amount
 	if health <= 0:
 		_die()

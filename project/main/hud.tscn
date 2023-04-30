@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhl6y75dnwpbg"]
+[gd_scene load_steps=4 format=3 uid="uid://bhl6y75dnwpbg"]
 
 [ext_resource type="Script" path="res://main/hud.gd" id="1_hukr5"]
 [ext_resource type="Theme" uid="uid://qfchrmm601e2" path="res://resources/theme.tres" id="1_husl3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rfsku"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hukr5")
@@ -67,7 +69,56 @@ layout_mode = 2
 toggle_mode = true
 text = "Armor: 1"
 
+[node name="GameOverPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -56.0
+offset_right = 24.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_husl3")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -37.0
+offset_right = 39.5
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_rfsku")
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Play Again"
+
+[node name="MainMenu" type="Button" parent="GameOverPanel/VBoxContainer"]
+layout_mode = 2
+text = "Main Menu"
+
 [connection signal="toggled" from="TowerTypes/Bolt" to="." method="_on_bolt_toggled"]
 [connection signal="toggled" from="TowerTypes/Cannon" to="." method="_on_cannon_toggled"]
 [connection signal="toggled" from="TowerTypes/Lance" to="." method="_on_lance_toggled"]
 [connection signal="toggled" from="TowerTypes/Armor" to="." method="_on_armor_toggled"]
+[connection signal="pressed" from="GameOverPanel/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="GameOverPanel/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

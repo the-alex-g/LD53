@@ -1,6 +1,9 @@
 extends CanvasLayer
 
 signal selection_changed(new_selection)
+signal start_game
+
+var _score := 0
 
 @onready var _scrap_label : Label = $Control/ScrapLabel
 @onready var _score_label : Label = $Control/ScoreLabel
@@ -20,6 +23,7 @@ func _on_main_update_scrap(value:int)->void:
 
 
 func _on_main_update_score(value:int)->void:
+	_score = value
 	_score_label.text = "Score: " + str(value)
 
 
@@ -61,3 +65,17 @@ func _on_armor_toggled(button_pressed:bool)->void:
 		emit_signal("selection_changed", "armor")
 	else:
 		_armor_button.set_pressed_no_signal(true)
+
+
+func _on_main_game_over()->void:
+	$GameOverPanel/VBoxContainer/Label.text = "You got " + str(_score) + " points!"
+	$GameOverPanel.visible = true
+
+
+func _on_play_again_pressed()->void:
+	$GameOverPanel.visible = false
+	emit_signal("start_game")
+
+
+func _on_main_menu_pressed()->void:
+	get_tree().change_scene_to_file("res://menu/main_menu.tscn")
