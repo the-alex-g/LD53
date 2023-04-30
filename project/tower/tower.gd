@@ -30,6 +30,11 @@ func _process(_delta:float)->void:
 
 
 func _on_attack_timer_timeout()->void:
+	if _target.global_position.distance_to(global_position) > _range:
+		_target = null
+		_attack_timer.stop()
+		return
+	
 	var projectile : Projectile = preload("res://projectiles/projectile.tscn").instantiate()
 	projectile.type = tower_type
 	projectile.position = global_position
@@ -42,12 +47,6 @@ func _on_body_entered(body:PhysicsBody2D)->void:
 	if body is Enemy and _target == null:
 		_target = body
 		_attack_timer.start(attack_delay_time)
-
-
-func _on_body_exited(body:PhysicsBody2D)->void:
-	if body == _target:
-		_target = null
-		_attack_timer.stop()
 
 
 func armor()->void:
